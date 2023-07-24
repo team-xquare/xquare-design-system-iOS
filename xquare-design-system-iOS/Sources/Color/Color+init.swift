@@ -9,29 +9,15 @@ public enum ColorType: String {
     case netural = "Netural"
     case neutralVariant = "Neutral Variant"
 }
-
-public enum ColorState {
-    case base
-    case on
-    case container
-    case onContainer
-
-    func colorState(_ type: ColorType) -> String {
-        switch self {
-        case .base:
-            return type.rawValue
-        case .on:
-            return "on \(type.rawValue)"
-        case .container:
-            return "\(type.rawValue) Container"
-        case .onContainer:
-            return "On \(type.rawValue) Container"
-        }
-    }
-}
-
 extension Color {
-    init(type: ColorType, _ state: ColorState) {
-        self.init(state.colorState(type), bundle: Bundle.module)
+    init(type: ColorType, _ palette: Int) {
+        self.init("\(type.rawValue) \(palette)", bundle: Bundle.module)
+    }
+    
+    public func darkModeColor(_ dark: Color) -> Color {
+        let color = UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            return UITraitCollection.userInterfaceStyle == .dark ? UIColor(dark) : UIColor(self)
+        }
+        return Color(uiColor: color)
     }
 }
