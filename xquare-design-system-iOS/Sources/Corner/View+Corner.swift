@@ -1,15 +1,15 @@
 import SwiftUI
-import UIKit
 
 public extension View {
-    func xCorner(type: CornerType) -> some View {
-        ModifiedContent(content: self, modifier: XCorner(type: type))
+    func xCorner(_ type: CornerType) -> some View {
+        self
+            .modifier(XCorner(type))
     }
 }
 
 struct XCorner: ViewModifier {
-    var type: CornerType
-    init(type: CornerType) {
+    let type: CornerType
+    init(_ type: CornerType) {
         self.type = type
     }
 
