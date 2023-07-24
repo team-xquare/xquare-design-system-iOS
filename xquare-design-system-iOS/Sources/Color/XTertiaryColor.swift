@@ -1,10 +1,10 @@
 import SwiftUI
 
 public extension Color {
-    struct Tertiary{ }
+    struct Tertiary { }
 }
 
-public extension Color.Tertiary{
+public extension Color.Tertiary {
     private static let tertiary0: Color = Color(type: .tertiary, 0)
     private static let tertiary10: Color = Color(type: .tertiary, 10)
     private static let tertiary20: Color = Color(type: .tertiary, 20)

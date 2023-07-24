@@ -1,10 +1,10 @@
 import SwiftUI
 
 public extension Color {
-    struct Secondary{ }
+    struct Secondary { }
 }
 
-public extension Color.Secondary{
+public extension Color.Secondary {
     private static let secondary0: Color = Color(type: .secondary, 0)
     private static let secondary10: Color = Color(type: .secondary, 10)
     private static let secondary20: Color = Color(type: .secondary, 20)
