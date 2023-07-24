@@ -19,8 +19,8 @@ public extension Color.Neutral {
     private static let neutral99: Color = Color(type: .netural, 99)
     private static let neutral100: Color = Color(type: .netural, 100)
 
-    static let backGround: Color = neutral99.darkModeColor(neutral0)
-    static let onBackGround: Color = neutral10.darkModeColor(neutral90)
+    static let background: Color = neutral99.darkModeColor(neutral0)
+    static let onBackground: Color = neutral10.darkModeColor(neutral90)
     static let surface: Color = neutral100.darkModeColor(neutral0)
     static let onSurface: Color = neutral0.darkModeColor(neutral100)
 }
