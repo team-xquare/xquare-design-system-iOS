@@ -9,6 +9,7 @@ public enum ColorType: String {
     case netural = "Netural"
     case neutralVariant = "Neutral Variant"
 }
+
 extension Color {
     init(type: ColorType, _ palette: Int) {
         self.init("\(type.rawValue) \(palette)", bundle: Bundle.module)
