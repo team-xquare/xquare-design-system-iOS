@@ -1,6 +1,6 @@
 import SwiftUI
 
-public enum CornerType: CGFloat {
+public enum XCornerStyle: CGFloat {
     case none = 0
     case xSmall = 4
     case small = 8
