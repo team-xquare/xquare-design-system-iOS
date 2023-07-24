@@ -5,5 +5,8 @@ public extension Color {
 }
 
 public extension Color.Error {
-    static let error50: Color = Color("Error 50", bundle: Bundle.module)
+    private static let error40: Color = Color(type: .error, 40)
+    private static let error60: Color = Color(type: .error, 60)
+
+    static let error: Color = error60.darkModeColor(error40)
 }
