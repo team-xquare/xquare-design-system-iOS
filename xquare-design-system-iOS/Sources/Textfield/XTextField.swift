@@ -43,6 +43,7 @@ public struct XTextField: View {
             case let .iconOnPrefix(icon, action),
                 let .iconOnPrefixAndSuffix(_, icon, action):
                 Button { action() } label: { icon }
+
             default:
                 EmptyView()
             }
@@ -60,9 +61,11 @@ public struct XTextField: View {
                         .frame(width: 24, height: 24)
                         .foregroundColor(textColor)
                 }
+
             case let .iconOnSuffix(icon, action),
                 let .iconOnPrefixAndSuffix(_, icon, action):
                 Button { action() } label: { icon }
+
             default:
                 EmptyView()
             }
@@ -106,6 +109,7 @@ public struct XTextField: View {
                         )
                         .offset(x: 28, y: -10)
                 }
+
             default:
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(
