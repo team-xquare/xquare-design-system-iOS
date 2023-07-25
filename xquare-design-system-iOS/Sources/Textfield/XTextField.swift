@@ -19,6 +19,7 @@ public struct XTextField: View {
         .Neutral.onSurface.opacity(isEnabled ? 1 : 0.4)
     }
     
+    @State private var isSecure: Bool = false
     @State private var width = CGFloat.zero
     @State private var labelWidth = CGFloat.zero
 
@@ -51,6 +52,14 @@ public struct XTextField: View {
             Spacer()
 
             switch xtfStyle {
+            case .secure:
+                Button {
+                    isSecure.toggle()
+                } label: {
+                    Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(textColor)
+                }
             case let .iconOnSuffix(icon, action),
                 let .iconOnPrefixAndSuffix(_, icon, action):
                 Button { action() } label: { icon }
@@ -117,14 +126,20 @@ public struct XTextField: View {
     @ViewBuilder
     func xTextField() -> some View {
         ZStack(alignment: .leading) {
-            TextField("", text: $text)
-                .accentColor(.Primary.primary)
-                .xFont(
-                    .body(.large),
-                    color: textColor
-                )
-                .focused($isFocused)
-                .onSubmit(onCommit)
+            Group {
+                if isSecure {
+                    SecureField("", text: $text)
+                } else {
+                    TextField("", text: $text)
+                }
+            }
+            .accentColor(.Primary.primary)
+            .xFont(
+                .body(.large),
+                color: .Neutral.onSurface.opacity(isEnabled ? 1 : 0.4)
+            )
+            .focused($isFocused)
+            .onSubmit(onCommit)
             
             Text(placeholder)
                 .xFont(
