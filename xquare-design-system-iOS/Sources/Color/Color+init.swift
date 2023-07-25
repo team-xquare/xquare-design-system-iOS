@@ -7,7 +7,7 @@ public enum ColorType: String {
     case tertiary = "Tertiary"
     case error = "Error"
     case neutral = "Neutral"
-    case neutralVariant = "Neutral Variant"
+    case neutralVariant = "NeutralVariant"
 }
 
 extension Color {
