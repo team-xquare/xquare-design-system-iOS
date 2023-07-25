@@ -6,7 +6,7 @@ public enum ColorType: String {
     case secondary = "Secondary"
     case tertiary = "Tertiary"
     case error = "Error"
-    case netural = "Netural"
+    case neutral = "Neutral"
     case neutralVariant = "Neutral Variant"
 }
 
