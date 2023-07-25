@@ -18,6 +18,17 @@ struct XTextFieldPlayground: View {
             ) {
                 print("on commit")
             }
+            
+            XTextField(
+                "placeholder",
+                text: $text,
+                xtfStyle: .supportText(supportText: "supporting text"),
+                isError: false
+            ) {
+                print("on commit")
+            }
+            .disabled(true)
+
             XSecureTextField(
                 "placeholder",
                 text: $text,

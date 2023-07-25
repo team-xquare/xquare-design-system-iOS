@@ -6,4 +6,5 @@ public enum XTextfieldStyle {
     case iconOnPrefix(icon: Image, action: () -> Void)
     case iconOnSuffix(icon: Image, action: () -> Void)
     case iconOnPrefixAndSuffix(prefix: Image, suffix: Image, action: () -> Void)
+    case supportText(supportText: String)
 }

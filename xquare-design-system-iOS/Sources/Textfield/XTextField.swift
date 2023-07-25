@@ -15,8 +15,12 @@ public struct XTextField: View {
         : .Neutral.onSurface
         : .Neutral.onSurface.opacity(0.4)
     }
+    var textColor: Color {
+        .Neutral.onSurface.opacity(isEnabled ? 1 : 0.4)
+    }
     
-    @State var isSecure: Bool = false
+    @State private var width = CGFloat.zero
+    @State private var labelWidth = CGFloat.zero
 
     public init(
         _ placeholder: String = "",
@@ -56,13 +60,56 @@ public struct XTextField: View {
         }
         .frame(height: 48)
         .padding(.horizontal, 16)
-        .overlay {
-            RoundedRectangle(cornerRadius: 12)
-                .strokeBorder(
-                    textFieldBolderColor,
-                    lineWidth: 1
-                )
+        .background {
+            switch xtfStyle {
+            case let .supportText(supportText):
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .trim(from: 0, to: 0.55)
+                        .stroke(
+                            textFieldBolderColor,
+                            lineWidth: 1
+                        )
+
+                    RoundedRectangle(cornerRadius: 12)
+                        .trim(from: 0.565 + (0.44 * (labelWidth / width)), to: 1)
+                        .stroke(
+                            textFieldBolderColor,
+                            lineWidth: 1
+                        )
+
+                    Text(supportText)
+                        .xFont(
+                            .label(.small),
+                            weight: .regular,
+                            color: textColor
+                        )
+                        .overlay(
+                            GeometryReader { geo in
+                                Color.clear.onAppear { labelWidth = geo.size.width }
+                            }
+                        )
+                        .padding(2)
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: .infinity,
+                            alignment: .topLeading
+                        )
+                        .offset(x: 28, y: -10)
+                }
+            default:
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(
+                        textFieldBolderColor,
+                        lineWidth: 1
+                    )
+            }
         }
+        .overlay(
+            GeometryReader { geo in
+                Color.clear.onAppear { width = geo.size.width }
+            }
+        )
         .animation(.easeIn(duration: 0.3), value: isError)
         .animation(.easeIn(duration: 0.3), value: isFocused)
     }
@@ -70,25 +117,21 @@ public struct XTextField: View {
     @ViewBuilder
     func xTextField() -> some View {
         ZStack(alignment: .leading) {
-            Group {
-                if isSecure {
-                    SecureField("", text: $text)
-                } else {
-                    TextField("", text: $text)
-                }
-            }
-            .accentColor(.Primary.primary)
-            .xFont(
-                .body(.large),
-                color: .Neutral.onSurface.opacity(isEnabled ? 1 : 0.4)
-            )
-            .focused($isFocused)
-            .onSubmit(onCommit)
-
+            TextField("", text: $text)
+                .accentColor(.Primary.primary)
+                .xFont(
+                    .body(.large),
+                    color: textColor
+                )
+                .focused($isFocused)
+                .onSubmit(onCommit)
+            
             Text(placeholder)
                 .xFont(
                     .body(.large),
-                    color: .NeutralVariant.outline
+                    color: isEnabled
+                    ? .NeutralVariant.outline
+                    : .Neutral.onSurface.opacity(0.4)
                 )
                 .opacity(text.isEmpty ? 1 : 0)
                 .onTapGesture {
