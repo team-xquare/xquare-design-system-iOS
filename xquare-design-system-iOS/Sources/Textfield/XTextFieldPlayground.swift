@@ -29,9 +29,10 @@ struct XTextFieldPlayground: View {
             }
             .disabled(true)
 
-            XSecureTextField(
+            XTextField(
                 "placeholder",
                 text: $text,
+                xtfStyle: .secure,
                 isError: false
             ) {
                 print("on commit")
