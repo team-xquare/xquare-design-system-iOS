@@ -61,7 +61,7 @@ extension XFontStyle {
                 return .init(size: 24, lineSpacing: 32)
             }
 
-        case .title(let sizeStyle):
+        case let .title(sizeStyle):
             switch sizeStyle {
             case .large:
                 return .init(size: 22, lineSpacing: 28)
@@ -73,7 +73,7 @@ extension XFontStyle {
                 return .init(size: 14, lineSpacing: 20)
             }
 
-        case .body(let sizeStyle):
+        case let .body(sizeStyle):
             switch sizeStyle {
             case .large:
                 return .init(size: 14, lineSpacing: 20)
@@ -85,7 +85,7 @@ extension XFontStyle {
                 return .init(size: 11, lineSpacing: 16)
             }
 
-        case .label(let sizeStyle):
+        case let .label(sizeStyle):
             switch sizeStyle {
             case .large:
                 return .init(size: 16, lineSpacing: 24)
