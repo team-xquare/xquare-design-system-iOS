@@ -1,43 +1,29 @@
 import SwiftUI
 
 struct XTextFieldPlayground: View {
-    @State var text = ""
+    @State var text1 = ""
+    @State var text2 = ""
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             XTextField(
-                "placeholder",
-                text: $text,
-                xtfStyle: .iconOnPrefixAndSuffix(
-                    prefix: Image(systemName: "house"),
-                    suffix: Image(systemName: "house"),
-                    action: {
-                        print("asdf")
-                    }
-                ),
+                "아이디",
+                text: $text1,
+                xtfStyle: .supportText(),
                 isError: false
             ) {
-                print("on commit")
+                
             }
-            
             XTextField(
-                "placeholder",
-                text: $text,
-                xtfStyle: .supportText(supportText: "supporting text"),
+                "비밀번호",
+                text: $text2,
+                xtfStyle: .supportText(isSecure: true),
                 isError: false
             ) {
-                print("on commit")
+                
             }
-            .disabled(true)
-
-            XTextField(
-                "placeholder",
-                text: $text,
-                xtfStyle: .secure,
-                isError: false
-            ) {
-                print("on commit")
-            }
+            .disabled(false)
         }
+        .xBackground()
     }
 }
 
