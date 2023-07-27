@@ -76,25 +76,25 @@ extension XFontStyle {
         case let .body(sizeStyle):
             switch sizeStyle {
             case .large:
-                return .init(size: 14, lineSpacing: 20)
+                return .init(size:16, lineSpacing: 20)
 
             case .medium:
-                return .init(size: 12, lineSpacing: 16)
+                return .init(size: 14, lineSpacing: 16)
 
             case .small:
-                return .init(size: 11, lineSpacing: 16)
+                return .init(size: 12, lineSpacing: 16)
             }
 
         case let .label(sizeStyle):
             switch sizeStyle {
             case .large:
-                return .init(size: 16, lineSpacing: 24)
+                return .init(size: 14, lineSpacing: 24)
 
             case .medium:
-                return .init(size: 14, lineSpacing: 20)
+                return .init(size: 12, lineSpacing: 20)
 
             case .small:
-                return .init(size: 12, lineSpacing: 16)
+                return .init(size: 11, lineSpacing: 16)
             }
         }
     }
