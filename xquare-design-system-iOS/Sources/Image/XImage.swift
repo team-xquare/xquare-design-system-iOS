@@ -40,7 +40,7 @@ public struct XImage: View {
         xImageToImage()
             .resizable()
             .renderingMode(renderingMode)
-            .frame(width: 48, height: 48)
+            .frame(width: 24, height: 24)
     }
 
     private func xImageToImage() -> SwiftUI.Image {

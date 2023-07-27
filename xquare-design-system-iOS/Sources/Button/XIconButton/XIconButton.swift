@@ -1,58 +1,25 @@
 import SwiftUI
 
 public struct XIconButton: View {
-
-    @Binding var isDisabled: Bool
-    var image: Image
-    var action: () -> ()
+    var icon: XImage.Image
     var type: XIconButtonType
+    var action: () -> ()
 
     public init(
-        isDisabled: Binding<Bool> = .constant(true),
-        image: Image,
-        action: @escaping () -> (),
-        type: XIconButtonType = .filled
+        icon: XImage.Image,
+        type: XIconButtonType = .filled,
+        action: @escaping () -> ()
     ) {
-        self._isDisabled = isDisabled
-        self.image = image
-        self.action = action
+        self.icon = icon
         self.type = type
+        self.action = action
     }
     
     public var body: some View {
-        switch type {
-        case .filled:
-            Button(action: action) {
-                image
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundColor( .Primary.onPrimary)
-            }
-            .xIconButtonStyle(.filled)
-            .disabled(isDisabled)
-        case .outlined:
-            Button(action: action) {
-                image
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(isDisabled
-                                     ? .Primary.primary.opacity(0.4)
-                                     : .Primary.primary)
-            }
-            .xIconButtonStyle(.outlined)
-            .disabled(isDisabled)
-        case .icon:
-            Button(action: action) {
-                image
-                    .resizable()
-                    .frame(width: 24, height: 24)
-                    .foregroundColor(isDisabled
-                                     ? .Neutral.onSurface.opacity(0.4)
-                                     : .Neutral.onSurface)
-            }
-            .xIconButtonStyle(.icon)
-            .disabled(isDisabled)
+        Button(action: action) {
+            XImage(icon, renderingMode: .template)
         }
+        .xIconButtonStyle(type)
     }
 }
 // MARK: Preview
@@ -60,12 +27,21 @@ struct XIconButton_Preview: PreviewProvider {
     static var previews: some View {
         VStack {
             Spacer()
-            XIconButton(isDisabled: .constant(false), image: Image(systemName: "pencil.circle.fill"), action: { }, type: .filled)
-            XIconButton(isDisabled: .constant(true), image: Image(systemName: "pencil.circle.fill"), action: { }, type: .filled)
-            XIconButton(isDisabled: .constant(false), image: Image(systemName: "pencil.circle.fill"), action: { }, type: .outlined)
-            XIconButton(isDisabled: .constant(true), image: Image(systemName: "pencil.circle.fill"), action: { }, type: .outlined)
-            XIconButton(isDisabled: .constant(false), image: Image(systemName: "pencil.circle.fill"), action: { }, type: .icon)
-            XIconButton(isDisabled: .constant(true), image: Image(systemName: "pencil.circle.fill"), action: { }, type: .icon)
+            XIconButton(
+                icon: .filledDashboard,
+                type: .filled,
+                action: { }
+            )
+            XIconButton(
+                icon: .filledDashboard,
+                type: .outlined,
+                action: { }
+            )
+            XIconButton(
+                icon: .filledDashboard,
+                type: .icon,
+                action: { }
+            )
             Spacer()
         }
     }

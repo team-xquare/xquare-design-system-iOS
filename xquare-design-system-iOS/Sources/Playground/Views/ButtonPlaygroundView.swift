@@ -15,7 +15,7 @@ struct ButtonPlaygroundView: View {
                 XButton(
                     "Filled 버튼",
                     icon: .filledHeart,
-                    style: .filled,
+                    type: .filled,
                     action: {}
                 )
                 .disabled(isDisable)
@@ -23,7 +23,7 @@ struct ButtonPlaygroundView: View {
                 XButton(
                     "Outlined 버튼",
                     icon: .filledHeart,
-                    style: .outlined,
+                    type: .outlined,
                     action: {}
                 )
                 .disabled(isDisable)
@@ -31,7 +31,25 @@ struct ButtonPlaygroundView: View {
                 XButton(
                     "Text 버튼",
                     icon: .filledHeart,
-                    style: .text,
+                    type: .text,
+                    action: {}
+                )
+                .disabled(isDisable)
+                XIconButton(
+                    icon: .filledHeart,
+                    type: .filled,
+                    action: {}
+                )
+                .disabled(isDisable)
+                XIconButton(
+                    icon: .filledHeart,
+                    type: .outlined,
+                    action: {}
+                )
+                .disabled(isDisable)
+                XIconButton(
+                    icon: .filledHeart,
+                    type: .icon,
                     action: {}
                 )
                 .disabled(isDisable)

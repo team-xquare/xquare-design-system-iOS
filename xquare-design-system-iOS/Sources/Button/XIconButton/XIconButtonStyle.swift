@@ -28,6 +28,9 @@ extension XIconButtonStyle {
         @Environment(\.isEnabled) private var isEnabled: Bool
         var body: some View {
             configuration.label
+                .xFont(.body(.large),
+                       weight: .medium,
+                       color: .Primary.onPrimary)
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
                 .background(isEnabled ? Color.Primary.primary : Color.Primary.primary.opacity(0.4))
@@ -43,6 +46,11 @@ extension XIconButtonStyle {
         @Environment(\.isEnabled) private var isEnabled: Bool
         var body: some View {
             configuration.label
+                .xFont(.body(.large),
+                       weight: .medium,
+                       color: isEnabled
+                       ? .Primary.primary
+                       : .Primary.primary.opacity(0.4))
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
                 .background(isEnabled
@@ -71,6 +79,11 @@ extension XIconButtonStyle {
         @Environment(\.isEnabled) private var isEnabled: Bool
         var body: some View {
             configuration.label
+                .xFont(.body(.large),
+                       weight: .medium,
+                       color: isEnabled
+                       ? .Neutral.onSurface
+                       : .Neutral.onSurface.opacity(0.4))
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
                 .background(isEnabled
