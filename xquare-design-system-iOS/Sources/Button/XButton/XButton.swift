@@ -36,7 +36,7 @@ public struct XButton: View {
                     Text(text)
                 }
             }
-            .buttonStyle(XButtonStyle(type: .filled))
+            .xButtonStyle(.filled)
             .disabled(isDisabled)
         case .outlined:
             Button(action: action) {
@@ -52,7 +52,7 @@ public struct XButton: View {
                     Text(text)
                 }
             }
-            .buttonStyle(XButtonStyle(type: .outlined))
+            .xButtonStyle(.outlined)
             .disabled(isDisabled)
         case .text:
             Button(action: action) {
@@ -68,7 +68,7 @@ public struct XButton: View {
                     Text(text)
                 }
             }
-            .buttonStyle(XButtonStyle(type: .text))
+            .xButtonStyle(.text)
             .disabled(isDisabled)
         }
     }
@@ -89,7 +89,8 @@ struct XButton_Preview: PreviewProvider {
                     
                     XButton(isDisabled: .constant(false), text: "Enabled", action: { print("sadfq") }, type: .text)
                     XButton(isDisabled: .constant(true), text: "Enabled", action: { print("sadfq") }, type: .text)
-                    XButton(isDisabled: .constant(false), text: "Enabled", action: { print("sadfq") }, type: .outlined)                }
+                    XButton(isDisabled: .constant(false), text: "Enabled", action: { print("sadfq") }, type: .outlined)
+                }
                 HStack {
                     XButton(isDisabled: .constant(true), text: "Enabled", action: { print("sadfq") }, type: .outlined)
                     XButton(isDisabled: .constant(false), text: "Enabled", action: { print("sadfq") }, type: .filled)

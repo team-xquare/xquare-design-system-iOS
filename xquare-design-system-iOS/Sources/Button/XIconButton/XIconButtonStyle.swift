@@ -1,36 +1,33 @@
 import SwiftUI
-public struct XButtonStyle: ButtonStyle {
-    var type: XButtonType
+public struct XIconButtonStyle: ButtonStyle {
+    var type: XIconButtonType
     
     public func makeBody(configuration: Configuration) -> some View {
         switch type {
         case .filled:
-            AnyView(FilledButton(configuration: configuration))
+            AnyView(FilledIconButton(configuration: configuration))
         case .outlined:
-            AnyView(OutlinedButton(configuration: configuration))
-        case .text:
-            AnyView(TextButton(configuration: configuration))
+            AnyView(OutlinedIconButton(configuration: configuration))
+        case .icon:
+            AnyView(IconIconButton(configuration: configuration))
         }
     }
 }
 
 // MARK: - Usage
 extension Button {
-    func solidBtnStyle(_ type: XButtonType) -> some View {
-        self.buttonStyle(XButtonStyle(type: type))
+    func xIconButtonStyle(_ type: XIconButtonType) -> some View {
+        self.buttonStyle(XIconButtonStyle(type: type))
     }
 }
 
 
-extension XButtonStyle {
-    struct FilledButton: View {
+extension XIconButtonStyle {
+    struct FilledIconButton: View {
         let configuration: ButtonStyle.Configuration
         @Environment(\.isEnabled) private var isEnabled: Bool
         var body: some View {
             configuration.label
-                .xFont(.body(.large),
-                       weight: .medium,
-                       color: .Primary.onPrimary)
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
                 .background(isEnabled ? Color.Primary.primary : Color.Primary.primary.opacity(0.4))
@@ -40,17 +37,12 @@ extension XButtonStyle {
 }
 
 
-extension XButtonStyle {
-    struct OutlinedButton: View {
+extension XIconButtonStyle {
+    struct OutlinedIconButton: View {
         let configuration: ButtonStyle.Configuration
         @Environment(\.isEnabled) private var isEnabled: Bool
         var body: some View {
             configuration.label
-                .xFont(.body(.large),
-                       weight: .medium,
-                       color: isEnabled
-                       ? .Primary.primary
-                       : .Primary.primary.opacity(0.4))
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
                 .background(isEnabled
@@ -73,17 +65,12 @@ extension XButtonStyle {
     }
 }
 
-extension XButtonStyle {
-    struct TextButton: View {
+extension XIconButtonStyle {
+    struct IconIconButton: View {
         let configuration: ButtonStyle.Configuration
         @Environment(\.isEnabled) private var isEnabled: Bool
         var body: some View {
             configuration.label
-                .xFont(.body(.large),
-                       weight: .medium,
-                       color: isEnabled
-                       ? .Neutral.onSurface
-                       : .Neutral.onSurface.opacity(0.4))
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
                 .background(isEnabled
