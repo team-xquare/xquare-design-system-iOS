@@ -57,13 +57,11 @@ public struct XTextField: View {
             case let .default(isSecure),
                 let .supportText(isSecure):
                 if isSecure {
-                    Button {
-                        self.isSecure.toggle()
-                    } label: {
-                        Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(textColor)
-                    }
+                    XImage(!self.isSecure ? .outlinedEye : .filledEye)
+                        .foregroundColor(textColor)
+                        .onTapGesture {
+                            self.isSecure.toggle()
+                        }
                 }
 
             case let .iconOnSuffix(icon, action),
@@ -170,7 +168,7 @@ struct XTextField_Previews: PreviewProvider {
             XTextField(
                 "아이디",
                 text: .constant(""),
-                xtfStyle: .supportText(),
+                xtfStyle: .default(),
                 isError: false
             ) {
                 
@@ -178,8 +176,8 @@ struct XTextField_Previews: PreviewProvider {
             .disabled(false)
             XTextField(
                 "비밀번호",
-                text: .constant(""),
-                xtfStyle: .supportText(isSecure: true),
+                text: .constant("asdfasdf"),
+                xtfStyle: .default(isSecure: true),
                 isError: false
             ) {
                 
