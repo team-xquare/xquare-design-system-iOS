@@ -1,6 +1,12 @@
 import SwiftUI
 public struct XButtonStyle: ButtonStyle {
-    var type: XButtonType
+    public enum Style {
+        case filled
+        case outlined
+        case text
+    }
+
+    var style: Style
     
     public func makeBody(configuration: Configuration) -> some View {
         switch type {
@@ -16,8 +22,8 @@ public struct XButtonStyle: ButtonStyle {
 
 // MARK: - Usage
 extension Button {
-    func solidBtnStyle(_ type: XButtonType) -> some View {
-        self.buttonStyle(XButtonStyle(type: type))
+    func xStyle(_ style: XButtonStyle.Style) -> some View {
+        self.buttonStyle(XButtonStyle(style: style))
     }
 }
 
