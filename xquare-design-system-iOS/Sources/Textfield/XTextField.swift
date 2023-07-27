@@ -8,6 +8,7 @@ public struct XTextField: View {
     var isError: Bool
     var onCommit: () -> Void
     @FocusState var isFocused: Bool
+
     var textFieldBolderColor: Color {
         isEnabled ?
         isFocused ? .Secondary.secondary
@@ -26,7 +27,7 @@ public struct XTextField: View {
     public init(
         _ placeholder: String = "",
         text: Binding<String>,
-        xtfStyle: XTextfieldStyle = .default,
+        xtfStyle: XTextfieldStyle = .default(),
         isError: Bool = false,
         onCommit: @escaping () -> Void = {}
     ) {
@@ -53,13 +54,16 @@ public struct XTextField: View {
             Spacer()
 
             switch xtfStyle {
-            case .secure:
-                Button {
-                    isSecure.toggle()
-                } label: {
-                    Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(textColor)
+            case let .default(isSecure),
+                let .supportText(isSecure):
+                if isSecure {
+                    Button {
+                        self.isSecure.toggle()
+                    } label: {
+                        Image(systemName: isSecure ? "eye.fill" : "eye.slash.fill")
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(textColor)
+                    }
                 }
 
             case let .iconOnSuffix(icon, action),
@@ -74,7 +78,7 @@ public struct XTextField: View {
         .padding(.horizontal, 16)
         .background {
             switch xtfStyle {
-            case let .supportText(supportText):
+            case .supportText:
                 ZStack {
                     RoundedRectangle(cornerRadius: 12)
                         .trim(from: 0, to: 0.55)
@@ -90,7 +94,7 @@ public struct XTextField: View {
                             lineWidth: 1
                         )
 
-                    Text(supportText)
+                    Text(placeholder)
                         .xFont(
                             .label(.small),
                             weight: .regular,
@@ -164,26 +168,23 @@ struct XTextField_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             XTextField(
-                "hiasdfasd",
+                "아이디",
                 text: .constant(""),
-                xtfStyle: .default,
+                xtfStyle: .supportText(),
                 isError: false
             ) {
                 
             }
             .disabled(false)
-            .padding()
-
             XTextField(
-                "hiasdfasd",
-                text: .constant("hiasdfasd"),
-                xtfStyle: .default,
+                "비밀번호",
+                text: .constant(""),
+                xtfStyle: .supportText(isSecure: true),
                 isError: false
             ) {
                 
             }
             .disabled(false)
-            .padding()
         }
     }
 }
