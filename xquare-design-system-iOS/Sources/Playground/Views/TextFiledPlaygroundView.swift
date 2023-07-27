@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct TextFieldPlaygroundView: View {
-    @State var text1 = ""
+    @State var text1 = "asdfdsaf"
     @State var text2 = ""
-    @State var text3 = ""
+    @State var text3 = "asdfdas"
     @State var isError1 = false
 
     var body: some View {
@@ -20,6 +20,20 @@ struct TextFieldPlaygroundView: View {
                     text: $text2,
                     xtfStyle: .default(isSecure: true)
                 )
+                
+                XTextField(
+                    "아이디",
+                    text: $text1,
+                    xtfStyle: .default()
+                )
+                .disabled(true)
+
+                XTextField(
+                    "비밀번호",
+                    text: $text2,
+                    xtfStyle: .default(isSecure: true)
+                )
+                .disabled(true)
 
                 XTextField(
                     "Error",

@@ -15,7 +15,7 @@ struct ToastPlaygroundView: View {
         .xToast(
             isShowing: $isShowToast,
             message: "좋아요. 아주 좋아요. 오류가 나지 않았습니다.",
-            icon: .filledCalendar
+            icon: .filledHeart
         )
     }
 }
