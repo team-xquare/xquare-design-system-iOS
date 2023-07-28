@@ -33,7 +33,11 @@ extension XButtonStyle {
                        color: .Primary.onPrimary)
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
-                .background(isEnabled ? Color.Primary.primary : Color.Primary.primary.opacity(0.4))
+                .background(
+                    isEnabled
+                    ? Color.Primary.primary
+                    : Color.Primary.primary.opacity(0.4)
+                )
                 .xCorner(.medium)
         }
     }
@@ -53,11 +57,12 @@ extension XButtonStyle {
                        : .Primary.primary.opacity(0.4))
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
-                .background(isEnabled
-                            ? configuration.isPressed
-                            ? Color.Primary.primaryContainer
-                            : Color.Primary.onPrimary
-                            : Color.Primary.onPrimary.opacity(0.4)
+                .background(
+                    isEnabled
+                    ? configuration.isPressed
+                    ? Color.Primary.primaryContainer
+                    : Color.Primary.onPrimary
+                    : Color.Primary.onPrimary.opacity(0.4)
                 )
                 .xCorner(.medium)
                 .overlay {
@@ -86,11 +91,12 @@ extension XButtonStyle {
                        : .Neutral.onSurface.opacity(0.4))
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
-                .background(isEnabled
-                        ? configuration.isPressed
-                        ? Color.Primary.primaryContainer
-                        : Color.Primary.onPrimary
-                        : Color.Primary.onPrimary.opacity(0.4)
+                .background(
+                    isEnabled
+                    ? configuration.isPressed
+                    ? Color.Primary.primaryContainer
+                    : Color.Primary.onPrimary
+                    : Color.Primary.onPrimary.opacity(0.4)
                 )
                 .xCorner(.medium)
         }
