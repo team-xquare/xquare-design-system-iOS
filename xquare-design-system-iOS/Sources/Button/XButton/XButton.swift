@@ -1,10 +1,10 @@
 import SwiftUI
 
 public struct XButton: View {
-    var icon: XImage.Image?
     var text: String
-    var action: () -> ()
+    var icon: XImage.Image?
     var type: XButtonType
+    var action: () -> ()
 
     public init(
         _ text: String,
@@ -12,8 +12,8 @@ public struct XButton: View {
         type: XButtonType = .filled,
         action: @escaping () -> ()
     ) {
-        self.icon = icon
         self.text = text
+        self.icon = icon
         self.action = action
         self.type = type
     }
