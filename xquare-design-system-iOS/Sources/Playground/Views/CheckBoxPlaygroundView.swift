@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CheckboxPlaygroundView: View {
-    @State var state = XCheckBox.CheckBoxState.selected
+    @State var state = CheckBoxState.selected
     var body: some View {
         ScrollView {
             VStack {
