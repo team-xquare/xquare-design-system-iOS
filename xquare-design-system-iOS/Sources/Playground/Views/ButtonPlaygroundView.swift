@@ -145,13 +145,13 @@ struct ButtonPlaygroundView: View {
                     VStack {
                         Text("XFloatingActionButton")
                         XFloatingActionButton(
-                            icon: .filledMenu,
+                            icon: .menu,
                             action: { }
                         )
                         .disabled(isDisable)
                         XFloatingActionButton(
                             text: "Filled",
-                            icon: .filledMenu,
+                            icon: .menu,
                             action: { }
                         )
                         .disabled(isDisable)
