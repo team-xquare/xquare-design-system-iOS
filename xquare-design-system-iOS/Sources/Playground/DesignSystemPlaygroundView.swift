@@ -18,6 +18,10 @@ public struct DesignSystemPlaygroundView: View {
             List(list, id: \.0) { item in
                 NavigationLink {
                     item.1
+                        .navigationBarTitle(
+                            item.0 + " Playground",
+                            displayMode: .inline
+                        )
                 } label: {
                     Text(item.0)
                 }
