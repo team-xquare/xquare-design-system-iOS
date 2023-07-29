@@ -16,7 +16,8 @@ let package = Package(
     targets: [
         .target(
             name: "xquare-design-system-iOS",
-            path: "xquare-design-system-iOS"
+            path: "xquare-design-system-iOS",
+            resources: [.process("Resources")]
         )
     ]
 )
