@@ -30,5 +30,8 @@ public struct DesignSystemPlaygroundView: View {
 struct DeisgnSystemPlaygroundView_Previews: PreviewProvider {
     static var previews: some View {
         DesignSystemPlaygroundView()
+            .onAppear {
+                NotoSansKR.registerFonts()
+            }
     }
 }
