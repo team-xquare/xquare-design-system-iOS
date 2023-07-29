@@ -6,7 +6,8 @@ public struct DesignSystemPlaygroundView: View {
         ("Font", AnyView(FontPlaygroundView())),
         ("TextField", AnyView(TextFieldPlaygroundView())),
         ("Toast", AnyView(ToastPlaygroundView())),
-        ("Button", AnyView(ButtonPlaygroundView()))
+        ("Button", AnyView(ButtonPlaygroundView())),
+        ("Switch", AnyView(SwitchPlaygroundView()))
     ]
 
     public init() {}
