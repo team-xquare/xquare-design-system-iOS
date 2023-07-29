@@ -7,6 +7,7 @@ public struct DesignSystemPlaygroundView: View {
         ("TextField", AnyView(TextFieldPlaygroundView())),
         ("Toast", AnyView(ToastPlaygroundView())),
         ("Button", AnyView(ButtonPlaygroundView())),
+        ("CheckBox", AnyView(CheckboxPlaygroundView())),
         ("Switch", AnyView(SwitchPlaygroundView()))
     ]
 
