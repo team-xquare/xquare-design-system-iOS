@@ -14,10 +14,13 @@ public struct FontSize {
     }
 }
 
-public enum XFontWeight: String {
+public enum XFontWeight: String, CaseIterable {
+    case black = "Black"
     case bold = "Bold"
+    case light = "Light"
     case medium = "Medium"
     case regular = "Regular"
+    case thin = "Thin"
 }
 
 public enum XFontStyle: Hashable, XFontable {
