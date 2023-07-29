@@ -8,7 +8,7 @@ public struct XButton: View {
 
     public init(
         _ text: String,
-        icon: XImage.Image?,
+        icon: XImage.Image? = nil,
         type: XButtonType = .filled,
         action: @escaping () -> ()
     ) {
