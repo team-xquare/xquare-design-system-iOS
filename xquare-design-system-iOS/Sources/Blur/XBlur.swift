@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BackdropView: UIViewRepresentable {
+private struct BackdropView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> UIVisualEffectView {
         let view = UIVisualEffectView()
@@ -18,16 +18,16 @@ struct BackdropView: UIViewRepresentable {
 }
 
 public extension View {
-    func xBlur(radius: CGFloat) -> some View {
+    func xBlur(style: XBlurStyle) -> some View {
         self
-            .modifier(XBlur(radius: radius))
+            .modifier(XBlur(style: style))
     }
 }
 
 struct XBlur: ViewModifier {
     let radius: CGFloat
-    init(radius: CGFloat) {
-        self.radius = radius / 2
+    init(style: XBlurStyle) {
+        self.radius = style.rawValue / 2
     }
 
     func body(content: Content) -> some View {
