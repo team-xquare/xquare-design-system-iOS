@@ -18,6 +18,10 @@ public struct DesignSystemPlaygroundView: View {
             List(list, id: \.0) { item in
                 NavigationLink {
                     item.1
+                        .navigationBarTitle(
+                            item.0 + " Playground",
+                            displayMode: .inline
+                        )
                 } label: {
                     Text(item.0)
                 }
@@ -30,5 +34,8 @@ public struct DesignSystemPlaygroundView: View {
 struct DeisgnSystemPlaygroundView_Previews: PreviewProvider {
     static var previews: some View {
         DesignSystemPlaygroundView()
+            .onAppear {
+                NotoSansKR.registerFonts()
+            }
     }
 }
