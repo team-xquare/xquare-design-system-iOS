@@ -9,7 +9,8 @@ public struct DesignSystemPlaygroundView: View {
         ("Button", AnyView(ButtonPlaygroundView())),
         ("CheckBox", AnyView(CheckboxPlaygroundView())),
         ("Switch", AnyView(SwitchPlaygroundView())),
-        ("Alert", AnyView(AlertPlaygroundView()))
+        ("Alert", AnyView(AlertPlaygroundView())),
+        ("BottomSheet", AnyView(BottomSheetPlaygrondView()))
     ]
 
     public init() {}
