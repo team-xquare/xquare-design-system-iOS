@@ -52,7 +52,10 @@ struct XBottomSheet<Content: View>: View {
                                     self.isOpen.toggle()
                                 }
                         }
-                        content()
+
+                        content().padding(.top, isIndicator ? 0 : 16)
+
+                        Spacer()
                     }
                     .frame(width: geometry.size.width, height: self.maxHeight, alignment: .bottom)
                     .background(Color(.secondarySystemBackground))
