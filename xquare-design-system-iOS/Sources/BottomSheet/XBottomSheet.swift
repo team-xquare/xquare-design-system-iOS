@@ -58,7 +58,7 @@ struct XBottomSheet<Content: View>: View {
                         Spacer()
                     }
                     .frame(width: geometry.size.width, height: self.maxHeight, alignment: .bottom)
-                    .background(Color(.secondarySystemBackground))
+                    .background(Color.Neutral.background)
                     .xCorner(.large)
                     .offset(y: max(self.offset + self.translation, 0))
                     .animation(.interactiveSpring(), value: isOpen)
