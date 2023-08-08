@@ -20,11 +20,18 @@ struct XBottomSheet<Content: View>: View {
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.isIndicator = isIndicator
-        self.maxHeight = style.rawValue
         self.content = content
         self._isOpen = isOpen
+        
+        self.maxHeight = {
+            switch style {
+            case .full:
+                return UIScreen.main.bounds.height * 0.6
+            case .half:
+                return UIScreen.main.bounds.height * 0.3
+            }
+        }()
     }
-    
     var body: some View {
         ZStack {
             Spacer()
