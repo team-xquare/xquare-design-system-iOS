@@ -39,10 +39,7 @@ struct XBottomSheet<Content: View>: View {
                         if isIndicator {
                             RoundedRectangle(cornerRadius: 16)
                                 .fill(Color.NeutralVariant.outline)
-                                .frame(
-                                    width: 32,
-                                    height: 4
-                                )
+                                .frame(width: 32, height: 4)
                                 .padding(.vertical, 12)
                                 .onTapGesture {
                                     self.isOpen.toggle()
