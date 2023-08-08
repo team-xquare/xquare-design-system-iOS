@@ -78,12 +78,6 @@ struct XBottomSheet<Content: View>: View {
                 }
                 .xShadow(style: .medium)
             }
-            VStack {
-                Spacer()
-                Color.white
-                    .edgesIgnoringSafeArea(.bottom)
-                    .frame(height: CGFloat(10))
-            }
         }
         .background(Background())
         .ignoresSafeArea()
