@@ -74,7 +74,7 @@ public struct XAlert: View {
         .cornerRadius(12)
         .xShadow(style: .medium)
         .padding(.horizontal,16)
-        .xBlur(radius: 4)
+        .xBlur(style: .low)
         .onAppear {
             withAnimation(.default.speed(0.4)) {
                 animate = true
