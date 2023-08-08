@@ -58,7 +58,7 @@ struct XBottomSheet<Content: View>: View {
                     .background(Color(.secondarySystemBackground))
                     .xCorner(.large)
                     .offset(y: max(self.offset + self.translation, 0))
-                    .animation(.interactiveSpring())
+                    .animation(.interactiveSpring(), value: isOpen)
                     .gesture(
                         DragGesture()
                             .updating(self.$translation) { value, state, _ in
