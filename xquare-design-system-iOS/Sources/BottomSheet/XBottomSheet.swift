@@ -39,6 +39,7 @@ struct XBottomSheet<Content: View>: View {
                 .onTapGesture {
                     isOpen = false
                 }
+
             GeometryReader { geometry in
                 VStack {
                     Spacer()
