@@ -86,6 +86,7 @@ struct XBottomSheet<Content: View>: View {
             }
         }
         .background(Background())
+        .ignoresSafeArea()
     }
 }
 
