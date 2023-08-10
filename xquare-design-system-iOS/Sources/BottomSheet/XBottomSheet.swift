@@ -20,11 +20,18 @@ struct XBottomSheet<Content: View>: View {
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.isIndicator = isIndicator
-        self.maxHeight = style.rawValue
         self.content = content
         self._isOpen = isOpen
+        
+        self.maxHeight = {
+            switch style {
+            case .full:
+                return UIScreen.main.bounds.height * 0.6
+            case .half:
+                return UIScreen.main.bounds.height * 0.3
+            }
+        }()
     }
-    
     var body: some View {
         ZStack {
             Spacer()
@@ -32,6 +39,7 @@ struct XBottomSheet<Content: View>: View {
                 .onTapGesture {
                     isOpen = false
                 }
+
             GeometryReader { geometry in
                 VStack {
                     Spacer()
@@ -45,13 +53,16 @@ struct XBottomSheet<Content: View>: View {
                                     self.isOpen.toggle()
                                 }
                         }
-                        content()
+
+                        content().padding(.top, isIndicator ? 0 : 16)
+
+                        Spacer()
                     }
                     .frame(width: geometry.size.width, height: self.maxHeight, alignment: .bottom)
-                    .background(Color(.secondarySystemBackground))
+                    .background(Color.Neutral.background)
                     .xCorner(.large)
                     .offset(y: max(self.offset + self.translation, 0))
-                    .animation(.interactiveSpring())
+                    .animation(.interactiveSpring(), value: isOpen)
                     .gesture(
                         DragGesture()
                             .updating(self.$translation) { value, state, _ in
@@ -67,14 +78,9 @@ struct XBottomSheet<Content: View>: View {
                 }
                 .xShadow(style: .medium)
             }
-            VStack {
-                Spacer()
-                Color.white
-                    .edgesIgnoringSafeArea(.bottom)
-                    .frame(height: CGFloat(10))
-            }
         }
         .background(Background())
+        .ignoresSafeArea()
     }
 }
 
