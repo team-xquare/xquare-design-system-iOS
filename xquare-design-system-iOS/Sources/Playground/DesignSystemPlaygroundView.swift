@@ -11,7 +11,8 @@ public struct DesignSystemPlaygroundView: View {
         ("Switch", AnyView(SwitchPlaygroundView())),
         ("Alert", AnyView(AlertPlaygroundView())),
         ("BottomSheet", AnyView(BottomSheetPlaygrondView())),
-        ("Divider", AnyView(DividerPlaygroundView()))
+        ("Divider", AnyView(DividerPlaygroundView())),
+        ("DropDown", AnyView(DropDownPlaygroundView()))
     ]
 
     public init() {}
