@@ -19,7 +19,7 @@ public struct XDropDown: View {
             .background(Color.Neutral.surface)
             .cornerRadius(10)
         }
-        .frame(height: CGFloat(options.count) * 30)
+        .frame(height: CGFloat(options.count) * 25)
         .cornerRadius(10)
         .padding(.top, 50)
     }
