@@ -1,15 +1,14 @@
 import SwiftUI
 
 public struct DropDownCell: View {
-    @Binding var isSelected: Bool
     var option: String
-    var optionSelectedAction: ((_ option: String) -> Void)?
+    @Binding var isShowDropDown: Bool
+    @Binding var optionSelectedAction: String
 
     public var body: some View {
         Button {
-            if let optionSelectedAction = self.optionSelectedAction {
-                optionSelectedAction(self.option)
-            }
+            optionSelectedAction = option
+            isShowDropDown = false
         } label: {
             HStack {
                 Spacer()

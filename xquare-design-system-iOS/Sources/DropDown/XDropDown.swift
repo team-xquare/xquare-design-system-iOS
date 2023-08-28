@@ -2,17 +2,16 @@ import SwiftUI
 
 public struct XDropDown: View {
     @Binding var text: String
+    @Binding var isShowDropDown: Bool
     var options: [String]
-    var optionSelectedAction: ((_ option: String) -> Void)?
-
     public var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .center, spacing: 8) {
                 ForEach(options, id: \.self) { option in
                     DropDownCell(
-                        isSelected: .constant(text == option),
                         option: option,
-                        optionSelectedAction: optionSelectedAction
+                        isShowDropDown: $isShowDropDown,
+                        optionSelectedAction: $text
                     )
                 }
             }
@@ -22,6 +21,7 @@ public struct XDropDown: View {
         }
         .frame(height: CGFloat(options.count) * 30)
         .cornerRadius(10)
+        .padding(.top, 50)
     }
 }
 
@@ -33,6 +33,7 @@ struct XDropDown_Previews: PreviewProvider {
         VStack {
             XDropDown(
                 text: .constant("sdf"),
+                isShowDropDown: .constant(true),
                 options:
                     [
                         "Menu 1",
