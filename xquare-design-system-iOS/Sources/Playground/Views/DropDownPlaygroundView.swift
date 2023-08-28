@@ -7,10 +7,6 @@ struct DropDownPlaygroundView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
-//                XTextField("Sdf", text: $selectedOptions, xtfStyle: .default())
-//                    .onTapGesture {
-//                        self.showDropDown.toggle()
-//                    }
                 XButton(selectedOptions, type: .filled, action: {
                     self.showDropDown.toggle()
                 })
