@@ -11,7 +11,7 @@ public struct XDropDown: View {
                     DropDownCell(
                         option: option,
                         isShowDropDown: $isShowDropDown,
-                        optionSelectedAction: $text
+                        selectedOption: $text
                     )
                 }
             }

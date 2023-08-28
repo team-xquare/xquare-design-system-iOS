@@ -3,11 +3,11 @@ import SwiftUI
 public struct DropDownCell: View {
     var option: String
     @Binding var isShowDropDown: Bool
-    @Binding var optionSelectedAction: String
+    @Binding var selectedOption: String
 
     public var body: some View {
         Button {
-            optionSelectedAction = option
+            selectedOption = option
             isShowDropDown = false
         } label: {
             HStack {
