@@ -26,6 +26,27 @@ public struct XDropDown: View {
 }
 
 
+public extension View {
+    @ViewBuilder
+    func xDropDown(
+        _ selectedOption: Binding<String>,
+        isShowDropDown: Binding<Bool>,
+        options: [String]
+    ) -> some View {
+        self
+            .frame(maxWidth: .infinity)
+            .overlay(alignment: .top) {
+                if isShowDropDown.wrappedValue {
+                    XDropDown(
+                        text: selectedOption,
+                        isShowDropDown: isShowDropDown,
+                        options: options
+                    )
+                }
+            }
+            .animation(.easeInOut(duration: 0.3), value: isShowDropDown.wrappedValue)
+    }
+}
 
 struct XDropDown_Previews: PreviewProvider {
     @State var selectedText: String

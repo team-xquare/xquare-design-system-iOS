@@ -1,33 +1,28 @@
 import SwiftUI
 
 struct DropDownPlaygroundView: View {
-    @State var showDropDown: Bool = false
-    @State var selectedOptions: String = "홈"
+    @State var isShowDropDown: Bool = false
+    @State var selectedOption: String = "홈"
 
     var body: some View {
-        ZStack(alignment: .top) {
-            VStack {
-                XButton(selectedOptions, type: .filled, action: {
-                    self.showDropDown.toggle()
-                })
-                Spacer()
+        VStack {
+            XButton(selectedOption, type: .filled) {
+                self.isShowDropDown.toggle()
             }
-            VStack {
-                if self.showDropDown {
-                    XDropDown(
-                        text: $selectedOptions,
-                        isShowDropDown: $showDropDown,
-                        options: [
-                            "홈",
-                            "일정",
-                            "피드",
-                            "신청",
-                            "전체"
-                        ])
-                }
-            }
+            .xDropDown(
+                $selectedOption,
+                isShowDropDown: $isShowDropDown,
+                options: [
+                    "홈",
+                    "일정",
+                    "피드",
+                    "신청",
+                    "전체"
+                ]
+            )
         }
-        .animation(.easeInOut(duration: 0.3))
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.red)
     }
 }
 
