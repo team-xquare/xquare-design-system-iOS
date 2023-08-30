@@ -9,10 +9,14 @@ public struct XTextField: View {
     var onCommit: () -> Void
     @FocusState var isFocused: Bool
 
+    var lineWidth: CGFloat {
+        isFocused ? 2 : 1
+    }
+
     var textFieldBolderColor: Color {
         isEnabled ?
-        isFocused ? .Secondary.secondary
-        : isError ? .Error.error
+        isError ? .Error.error
+        : isFocused ? .Secondary.secondary
         : .Neutral.onSurface
         : .Neutral.onSurface.opacity(0.4)
     }
@@ -82,14 +86,14 @@ public struct XTextField: View {
                         .trim(from: 0, to: 0.55)
                         .stroke(
                             textFieldBolderColor,
-                            lineWidth: 1
+                            lineWidth: lineWidth
                         )
 
                     RoundedRectangle(cornerRadius: 12)
                         .trim(from: 0.565 + (0.44 * (labelWidth / width)), to: 1)
                         .stroke(
                             textFieldBolderColor,
-                            lineWidth: 1
+                            lineWidth: lineWidth
                         )
 
                     Text(placeholder)
@@ -116,7 +120,7 @@ public struct XTextField: View {
                 RoundedRectangle(cornerRadius: 12)
                     .stroke(
                         textFieldBolderColor,
-                        lineWidth: 1
+                        lineWidth: lineWidth
                     )
             }
         }
@@ -183,6 +187,25 @@ struct XTextField_Previews: PreviewProvider {
                 
             }
             .disabled(false)
+            XTextField(
+                "아이디",
+                text: .constant(""),
+                xtfStyle: .default(),
+                isError: true
+            ) {
+                
+            }
+            .disabled(false)
+            XTextField(
+                "비밀번호",
+                text: .constant("asdfasdf"),
+                xtfStyle: .default(isSecure: true),
+                isError: true
+            ) {
+                
+            }
+            .disabled(false)
+            
         }
     }
 }
