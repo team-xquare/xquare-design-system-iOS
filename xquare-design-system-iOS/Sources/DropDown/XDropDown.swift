@@ -16,11 +16,16 @@ public struct XDropDown: View {
                 }
             }
             .padding(.vertical, 12)
-            .background(Color.Neutral.surface)
             .cornerRadius(10)
         }
         .frame(height: CGFloat(options.count) * 25)
+        .background(Color.Neutral.surface)
         .cornerRadius(10)
+        .overlay {
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(lineWidth: 1)
+                .fill(Color.NeutralVariant.outlineVariant)
+        }
         .padding(.top, 50)
     }
 }
